@@ -1,0 +1,45 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #000000;
+    line-height: 70px;
+    color: #fff;
+}
+
+.bgColour {
+    background-color: rgb(215, 200, 255);
+}
+
+.navbar {
+    background-image: linear-gradient(to bottom right, #8ce0fa, #6818e7);;
+}
+
+.spaced {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.blackfade {
+    background-color: #000000;
+    backdrop-filter: blur(100px);
+    opacity: 0.5;
+}
+
+.titlebar  {
+    border-radius: 25px;
+    border: 2px solid #6a22e8;
+    padding: 20px;
+    width: auto;
+    height: auto;
+  }
+
+.titlebar-section {
+    background-color: #000000;
+    backdrop-filter: blur(100px);
+    opacity: 0.5;
+  }
