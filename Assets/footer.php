@@ -1,5 +1,5 @@
 <footer class="border-top footer">
-  <strong><div class="container" style="color: #3b4671;">
+  <strong><div class="container" style="color: white;">
     | MiniGym Sheffield © 2022 |
   </div></strong>
 </footer>

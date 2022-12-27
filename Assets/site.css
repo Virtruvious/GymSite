@@ -34,12 +34,21 @@
     border-radius: 25px;
     border: 2px solid #6a22e8;
     padding: 20px;
-    width: auto;
-    height: auto;
+    background-image: url(Images/PurpleGeo.png);
+    position: relative;
+  }
+
+.blurbg {
+    position: relative;
+    backdrop-filter: blur(50px);
   }
 
 .titlebar-section {
-    background-color: #000000;
-    backdrop-filter: blur(100px);
-    opacity: 0.5;
-  }
+    position: relative;
+    border-radius: 25px;
+    border: 2px solid #6a22e8;
+    padding: 20px;
+    width: 250px;
+    height: auto;
+    display: inline-block;
+}
