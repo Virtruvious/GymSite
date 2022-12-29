@@ -1,5 +1,6 @@
 .footer {
-    position: absolute;
+    position: relative;
+    margin-top: 20px;
     bottom: 0;
     width: 100%;
     white-space: nowrap;
@@ -51,4 +52,9 @@
     width: 250px;
     height: auto;
     display: inline-block;
+}
+
+.login-move-left {
+    position: relative;
+    right: 30%;
 }

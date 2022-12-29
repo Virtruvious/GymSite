@@ -1,4 +1,5 @@
-<?php  require_once 'Assets/navbar.php'; ?>
+<?php  define('__ROOT__', dirname(dirname(__FILE__))."/GymSite");
+require_once 'Assets/navbar.php'; ?>
 
 <link rel="stylesheet" href="assets/site.css"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -7,7 +8,6 @@
 
 <div class="container bgColour">
     <main>
-
         <br>
         <div class="col-12">
             <h1>MiniGym: Big Gains, Small Starts </h1>
@@ -39,5 +39,8 @@
     </center>
     </main>
 </div>
+
+<br>
+<br>
 
 <?php require_once 'Assets/footer.php'; ?>
