@@ -49,9 +49,10 @@
     border-radius: 25px;
     border: 2px solid #6a22e8;
     padding: 20px;
-    width: 250px;
+    width: auto;
     height: auto;
     display: inline-block;
+    color: #000000;
 }
 
 .login-move-left {

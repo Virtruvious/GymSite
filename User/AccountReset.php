@@ -3,7 +3,7 @@ require_once __ROOT__.'/Assets/navbar.php';
 require_once __ROOT__.'/User/Scripts/ResetPassword.php';
 
 $lallFields = "yes";
-$enabledetailcheck = "";
+$enabledetailcheck = $resetSuccess = "";
 $enablepwdreset = "disabled";
 
 if (isset($_POST['checkdetail'])) { 
@@ -46,7 +46,7 @@ if (isset($_POST['resetpwd'])) {
       if ($_POST['password1'] == $_POST['password2']) {
         $file = fopen("username.txt", "r");
         $username = fread($file, filesize("username.txt"));
-        $userLogin = ResetPassword($username);
+        $resetSuccess = ResetPassword($username);
         fclose($file);
         unlink("username.txt");
       }
@@ -95,6 +95,8 @@ if (isset($_POST['resetpwd'])) {
             echo $message;
           } 
         }
+
+        echo $resetSuccess;
         
 		    ?>
 	      </div></strong></center>

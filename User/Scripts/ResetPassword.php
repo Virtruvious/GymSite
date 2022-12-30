@@ -2,7 +2,7 @@
   function CheckDetails()
   {
     $db = new SQLite3("C:\\xampp\\Database\\miniGym.db"); 
-    $sql = 'SELECT * FROM customer WHERE username = :username AND postcode = :postcode AND email = :email AND substr(datebirth, 4, 2)  = :datebirth';
+    $sql = 'SELECT * FROM customer WHERE username = :username AND postcode = :postcode AND email = :email AND substr(datebirth, 6, 2) = :datebirth';
     $stmt = $db->prepare($sql); 
 
     $stmt->bindParam(':username', $_POST['username'], SQLITE3_TEXT);
@@ -29,6 +29,24 @@
     $stmt->bindParam(':password', $_POST['password1'], SQLITE3_TEXT);
     $stmt->bindParam(':username', $username, SQLITE3_TEXT);
     $stmt->execute();
+
+    if ($stmt->execute()) {
+      $text = "<div class='alert alert-success fade show col-10' role='alert style=font-weight: bold;'>
+      Your password has been reset successfully!	
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+      </div>";
+      return $text;
+    } else {
+      $text = "<div class='alert alert-danger fade show col-10' role='alert style=font-weight: bold;'>
+      Your password has not been reset successfully. Please try again.	
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+      </div>";
+      return $text;
+    }
   }
 
   function errorMessage () {

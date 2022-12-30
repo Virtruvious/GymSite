@@ -36,7 +36,7 @@ if (isset($_POST['csubmit'])) {
   if ($allFields == "yes") {
     $createUser = createUser();
 
-    header('Location: User/Home.php?username=' . $createUser);
+    header('Location: //localhost/GymSite/User/Home.php?username=' . $createUser);
   }
 }
 
@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
     if ($userLogin == null) {
       $errorlogin = "Incorrect Username or Password!";
     } else {
-      header('Location: User/Home.php?username=' . $_POST['username']);
+      header('Location: //localhost/GymSite/User/Home.php?username=' . $_POST['username']);
     }
   }
 }

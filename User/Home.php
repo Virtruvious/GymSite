@@ -3,11 +3,42 @@ require_once __ROOT__.'/Assets/navbar.php';
 require_once __ROOT__ . '/User/Scripts/UserHome.php';
 $username = $_GET['username'];
 
-$userdetails = getDetails($username);
+$userdetails = getDetails($username); // Grab userinfo for use in details table
 
-$membershipdetails = checkMembership($username);
+$membershipdetails = checkMembership($username); // Grab membership info (if any)
+$membershiptext = membershipText($membershipdetails); // Set membership text based on info
 
-print_r($membershipdetails);
+if (!($membershipdetails == null)) {
+	if (date('Y/m/d') > $membershipdetails[0]['expires']) { // If membership has expired
+		expiredMembership($username); // Set membership to suspended
+		$membershipdetails = checkMembership($username); // Regrab the membership details
+		$membershiptext = membershipText($membershipdetails); // And set the text to update page 
+	}
+}
+
+if(isset($_POST['monthly'])) { // NEW monthly membership
+	$membershipSignup = addMembership($username, 'monthly');
+	$membershipdetails = checkMembership($username); // Regrab the membership details
+	$membershiptext = membershipText($membershipdetails); // And set the text to update page 
+}
+
+if(isset($_POST['day'])) { // NEW day membership
+	$membershipSignup = addMembership($username, 'day');
+	$membershipdetails = checkMembership($username); // Regrab the membership details
+	$membershiptext = membershipText($membershipdetails); // And set the text to update page 
+}
+
+if(isset($_POST['resubmonthly'])) { // RESUB monthly membership
+	$membershipSignup = reactivateMembership($username, 'monthly');
+	$membershipdetails = checkMembership($username); // Regrab the membership details
+	$membershiptext = membershipText($membershipdetails); // And set the text to update page 
+}
+
+if(isset($_POST['resubday'])) { // RESUB day membership
+	$membershipSignup = reactivateMembership($username, 'day');
+	$membershipdetails = checkMembership($username); // Regrab the membership details
+	$membershiptext = membershipText($membershipdetails); // And set the text to update page 
+}
 ?>
 
 <link rel="stylesheet" href="../Assets/site.css"/>
@@ -17,7 +48,6 @@ print_r($membershipdetails);
 
 <div class="container bgColour">
     <main>
-        <br>
         <div class="col-12">
             <h1>Welcome <?php echo $userdetails[0][1]?>,</h1>
         </div>
@@ -25,9 +55,14 @@ print_r($membershipdetails);
 
         <center>
         <div class="container" style="color: #6a22e8;">    
-            <h3><b>Membership Details</b></h3>
-            DO THE MEMBERSHIP DETAILS HERE
-        </div>
+            <h3><b>Your MiniGym <i style="color: black;">PRO</i> Membership</b></h3>
+			<div class="container titlebar">
+        		<div class="container"> 
+            		<div class="blurbg titlebar-section" style="margin: 25px; color: white;">
+                		<?php echo $membershiptext?>
+            		</div>
+        		</div>
+    	</div>
         </center>
 
         <hr>
@@ -53,7 +88,7 @@ print_r($membershipdetails);
 						<td><?php echo $userdetails[0][4] //Email?></td>
                         <td><?php echo $userdetails[0][5] //Postcode?></td>
 						<td>
-							<a class="btn btn-primary" href="updateUser.php?uid=<?php echo $user[$i]['userId']; ?>">Update</a>
+							<a class="btn btn-primary" href="UpdateDetails.php?username=<?php echo $username; ?>">Update</a>
 						</td
 					</tr>
 				</table>

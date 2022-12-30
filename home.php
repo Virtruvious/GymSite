@@ -15,21 +15,21 @@ require_once 'Assets/navbar.php'; ?>
 
         <br>
 
-        <h5><strong>MiniGym</strong> is the brand new Gym within Sheffield offering affordable prices, and an amazing experience for you and all of your friends.</h5>
+        <h5><b>MiniGym</b> is the brand new Gym within Sheffield offering affordable prices, and an amazing experience for you and all of your friends.</h5>
 
         <br>
         <br>
 
     <div class="container titlebar">
     <center>
-        <h2><strong>Membership Pricing</strong></h2>
+        <h2><b>MiniGym <i style="color: white;">PRO</i> Membership</b></h2>
         <div class="container"> 
             <div class="blurbg titlebar-section" style="margin: 25px;">
                 <h4>MONTHLY PASS</h4>
                 <h5>£13.50</h5>
             </div>
 
-            <div class="blurbg titlebar-section">
+            <div class="blurbg titlebar-section" style="width: 225px;">
                 <h4>DAY PASS</h4>
                 <h5>£5.50</h5>
             </div>
