@@ -77,7 +77,7 @@ if(isset($_POST['resubday'])) { // RESUB day membership
 						<td>Date of Birth</td>
 						<td>Email</td>
 						<td>Postcode</td>
-                        <td>Actions</td>
+                        <td>Options</td>
 					</thead>
 
 					<tr>

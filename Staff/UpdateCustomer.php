@@ -1,9 +1,10 @@
 <?php define('__ROOT__', dirname(dirname(__FILE__)));
 require_once __ROOT__.'/Assets/navbar.php';
-require_once __ROOT__.'/User/Scripts/UpdateUser.php';
+require_once __ROOT__.'/Staff/Scripts/Customers.php';
 
 $lallFields = "yes";
 $updateSuccess = "";
+$staffif = $_GET['id'];
 $username = $_GET['username'];
 
 if (isset($_POST['update'])) { 
@@ -22,9 +23,12 @@ if (isset($_POST['update'])) {
     if ($_POST['dob'] == "") {
         $lallFields = "no";
     }
+    if ($_POST['password'] == "") {
+        $lallFields = "no";
+    }
   
     if ($lallFields == "yes") {
-      $updateSuccess = UpdateUser($username);
+      $updateSuccess = UpdateCustomer($username);
     }
 }?>
 
@@ -32,17 +36,19 @@ if (isset($_POST['update'])) {
 <link rel="stylesheet" href="../Assets/site.css"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<title>Update Your Details</title>
+<title>Update Customers</title>
 
 <div class="container bgColour">
     <main>
         <br>
         <div class="col-12">
-            <h1>Update Your Details!</h1>
+            <h1>Update Customer Details</h1>
         </div>
         <hr>
 
+        <center>
         <?php echo $updateSuccess; ?>
+        </center>
 
         <?php if ($lallFields == "no") { ?>
             <center><div class="alert alert-danger fade show col-10" role="alert" style="font-weight: bold;">
@@ -84,10 +90,15 @@ if (isset($_POST['update'])) {
             <label class="control-label labelFront"></label>
             <input class="form-control" type="date" name ="dob">
           </div>
-          <br>
           <div class="form-group col-md-6">
+                Password
+            <label class="control-label labelFront"></label>
+            <input class="form-control" type="password" name ="password" placeholder="********">
+          </div>
+          <br>
+          <div class="form-group col-md-10">
             <button type="submit" class="btn btn-success" name="update">Update Details</button>
-            <a href='Home.php<?php echo '?username='.$_GET['username']?>' class="btn btn-primary">Return Home</a>
+            <a href='Home.php<?php echo '?id='.$_GET['id']?>' class="btn btn-primary">Return to Staff Portal</a>
           </div>
 		</form>
         </div>

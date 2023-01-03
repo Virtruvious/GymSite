@@ -10,17 +10,15 @@
     $username = substr($fname, 0, 3) . substr($lname, strlen($lname) - 2, strlen($lname) - 1) . mt_rand(0, 9) . mt_rand(0, 9);
 
     $stmt->bindParam(':username', $username, SQLITE3_TEXT); 
-    $stmt->bindParam(':fname', $_POST['firstname'], SQLITE3_TEXT);
-    $stmt->bindParam(':lname', $_POST['lastname'], SQLITE3_TEXT);
+    $stmt->bindParam(':fname', $fname, SQLITE3_TEXT);
+    $stmt->bindParam(':lname', $lname, SQLITE3_TEXT);
     $stmt->bindParam(':password', $_POST['password'], SQLITE3_TEXT);
     $stmt->bindParam(':datebirth', $_POST['dob'], SQLITE3_TEXT);
     $stmt->bindParam(':email', $_POST['email'], SQLITE3_TEXT);
     $stmt->bindParam(':postcode', $_POST['postcode'], SQLITE3_TEXT);
 
-    //execute the sql statement
     $stmt->execute();
 
-    //the logic
     if ($stmt) {
       return $username;
     }

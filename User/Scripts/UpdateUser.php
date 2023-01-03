@@ -12,9 +12,9 @@ function UpdateUser($username)
     $stmt->bindParam(':email', $_POST['email'], SQLITE3_TEXT);
     $stmt->bindParam(':datebirth', $_POST['dob'], SQLITE3_TEXT);
 
-    $stmt->execute();
+    $result = $stmt->execute();
 
-    if ($stmt->execute()) {
+    if ($result) {
       $text = "<div class='alert alert-success fade show col-10' role='alert style=font-weight: bold;'>
       Your details have been updated successfully!	
       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>

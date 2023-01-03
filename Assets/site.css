@@ -12,6 +12,8 @@
 
 .bgColour {
     background-color: rgb(215, 200, 255);
+    height: auto;
+    width: auto;
 }
 
 .navbar {
@@ -38,6 +40,13 @@
     background-image: url(Images/PurpleGeo.png);
     position: relative;
   }
+
+  .staff  {
+    background: linear-gradient(to top, #d224818a, #964bd797), url(Images/PurpleGeo.png) no-repeat top center;
+    overflow: hidden;
+    height: 100%;
+    z-index: 2;
+}
 
 .blurbg {
     position: relative;

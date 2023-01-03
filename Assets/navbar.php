@@ -89,10 +89,17 @@ if (isset($_POST['login'])) {
               <a class="nav-link btn btn-outline-light spaced" href="//localhost/GymSite/">About Us</a>
             </li>
             <div class="dropdown spaced">
-              <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3c4a72;"><strong>Account</strong></button>
+              <button class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3c4a72;"><strong>Account</strong></button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <button type="button" class="dropdown-item" data-toggle="modal" data-target="#Login">Login</button>
                 <button type="button" class="dropdown-item" data-toggle="modal" data-target="#CreateAccount">Create an Account</button>
+              </div>
+            </div>
+            <div class="dropdown spaced">
+              <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3c4a72;"><strong>Staff</strong></button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a type="button" class="dropdown-item" href="//localhost/Gymsite/Staff/Login.php">Staff Login</a>
+                <a type="button" class="dropdown-item" href="//localhost/Gymsite/Manager/Login.php">Manager Login</a>
               </div>
             </div>
           </ul>
