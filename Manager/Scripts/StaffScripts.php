@@ -90,6 +90,29 @@ function deleteStaff($id) {
     }
 }
 
+function updateStatus($staffid, $status) {
+    $db = new SQLite3("C:\\xampp\\Database\\miniGym.db");
+    $sql = "UPDATE roles SET status = :status WHERE id = :id";
+    $stmt = $db->prepare($sql);
+
+    $stmt->bindParam(':id', $staffid, SQLITE3_TEXT);
+    $stmt->bindParam(':status', $status, SQLITE3_TEXT);
+
+    $result = $stmt->execute();
+
+    if ($result) {
+      $text = "<div class='alert alert-success fade show col-10' role='alert style=font-weight: bold;'>
+      Staff account has been set to ".$status."!	
+      </div>";
+      return $text;
+  } else {
+      $text = "<div class='alert alert-danger fade show col-10' role='alert style=font-weight: bold;'>
+      Staff account was unable to be edited. Please try again.	
+      </div>";
+      return $text;
+  }
+}
+
 function updateStaff($staffid)
   {
     $db = new SQLite3("C:\\xampp\\Database\\miniGym.db"); 

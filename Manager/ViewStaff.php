@@ -3,11 +3,21 @@ require_once __ROOT__.'/Assets/navbar.php';
 require_once __ROOT__ . '/Manager/Scripts/StaffScripts.php';
 $managerid = $_GET['id'];
 $staff = getStaff();
-$result = "";
+$result = $enableresult = $disableresult = "";
 
 if(isset($_POST['delete'])){
 	$staffid = $_POST['staffid'];
 	$result = deleteStaff($staffid);
+}
+
+if(isset($_POST['enable'])){
+	$staffid = $_POST['staffid'];
+	$enableresult = updateStatus($staffid, "active");
+}
+
+if(isset($_POST['disable'])){
+	$staffid = $_POST['staffid'];
+	$disableresult = updateStatus($staffid, "disabled");
 }
 ?>
 
@@ -22,7 +32,9 @@ if(isset($_POST['delete'])){
         <hr>
 
 		<center>
-		<?php echo $result; ?>
+		<?php echo $result; 
+		echo $enableresult;
+		echo $disableresult?>
         
 		<div class="titlebar-section staff">
 			<a class="btn btn-outline-light" href="AddStaff.php?id=<?php echo $managerid?>">Add New Staff Account</a>
@@ -51,7 +63,20 @@ if(isset($_POST['delete'])){
 					</thead>
 
 					<?php
-						for ($i=0; $i<count(getStaff()); $i++):
+					for ($i = 0; $i < count(getStaff()); $i++):
+						$enable = "";
+
+						if ($staff[$i]['status'] == "active") {
+							$enable = "<form method='post' style='padding-right: 2%;'>
+							<input type='hidden' name='staffid' value='" . $staff[$i]['id'] . "'>
+							<button class='btn btn-outline-danger' type='submit' name='disable'>Disable Account</button>
+							</form>";
+						} else if ($staff[$i]['status'] == "disabled") {
+							$enable = "<form method='post' style='padding-right: 2%;>
+							<input type='hidden' name='staffid' value='" . $staff[$i]['id'] . "'>
+							<button class='btn btn-outline-success' type='submit' name='enable'>Enable Account</button>
+							</form>";
+						}
 					?>
 
 					<tr>
@@ -64,9 +89,10 @@ if(isset($_POST['delete'])){
 						<td><?php echo $staff[$i]['pwd']?></td>
 						<td>
 							<div class="input-group">
-								<div style="padding-right: 11%;">
+								<div style="padding-right: 2%;">
 									<a class="btn btn-outline-dark" href="UpdateStaff.php<?php echo '?id='.$managerid?>&editid=<?php echo $staff[$i]['id']; ?>">Update</a>
 								</div>
+								<?php echo $enable ?>
 								<form method="post">
 									<input type="hidden" name="staffid" value="<?php echo $staff[$i]['id']; ?>">
 									<button class="btn btn-outline-danger" type="submit" name="delete">Delete</button>
